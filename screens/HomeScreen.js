@@ -7,6 +7,9 @@ import {
   Text,
   TouchableOpacity,
   View,
+  //Button,
+  TouchableHighlight,
+  Alert,
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
@@ -21,20 +24,25 @@ export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
+
   constructor(props) {
     super(props);
     this.state = {text: 'this is a test'};
-    this.buttonFunction = this.buttonFunction.bind(this);
+    // this.buttonFunction = this.buttonFunction.bind(this);
     
   }
-  buttonFunction = (navigate) => {
-      this.setState({
-        text: 'I changed!'
-      });
-      navigate('Links')
+  // buttonFunction = (navigate) => {
+  //     this.setState({
+  //       text: 'I changed!'
+  //     });
+  //     navigate('Links')
 
-    };
+  //   };
   
+    onButtonPress(link) {
+      const { navigate } = this.props.navigation;
+      navigate(link);
+    }
 
   render() {
     
@@ -65,19 +73,31 @@ export default class HomeScreen extends React.Component {
               backgroundColor='blue'
               color='white'
               title='Search by name' 
-              onPress={()=>this.buttonFunction(this.props.navigation.navigate)} />
+              onPress={()=>this.onButtonPress.bind(this)("Links")} />
           </View>
 
         <Text> {this.state.text} </Text>
         </ScrollView>
 
         <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
+          {/* <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
 
           <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
             <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
-          </View>
+          </View> */}
         </View>
+          
+        <View style = {styles.container1}>
+          <TouchableHighlight onPress={() => this.onButtonPress.bind(this)("Register")} style = {styles.button} underlayColor = '#99d9f4'>
+            <Text style = {styles.buttonText}>Login</Text>
+            {/* <Button onPress={() => {Alert.alert('You tapped the button!');}} /> */}
+          </TouchableHighlight>
+
+          <TouchableHighlight onPress={()=>this.onButtonPress.bind(this)("Register")} style = {styles.button} underlayColor = '#99d9f4' >
+            <Text style = {styles.buttonText}>Register</Text>
+          </TouchableHighlight> 
+        </View>
+
       </View>
     );
   }
@@ -203,4 +223,25 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#2e78b7',
   },
+  buttonText: {
+    fontSize:18,
+    color: 'white',
+    alignSelf: 'center'
+  },
+  button: {
+    height:40,
+    backgroundColor: '#2e78b7',
+    borderColor: '#2e78b7',
+    marginLeft: 10,
+    width: 80,
+    alignSelf: 'stretch',
+    justifyContent: 'center',
+  },
+  container1: {
+    //alignSelf: 'stretch',
+    flex: 0.2,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+  }
 });
