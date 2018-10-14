@@ -12,7 +12,7 @@ import {
   Alert,
 } from 'react-native';
 import { WebBrowser } from 'expo';
-
+import { db } from '../db/db';
 import { MonoText } from '../components/StyledText';
 
 import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
@@ -74,6 +74,14 @@ export default class HomeScreen extends React.Component {
               color='white'
               title='Search by name' 
               onPress={()=>this.onButtonPress.bind(this)("Links")} />
+            <View/>
+            
+            <Button
+              medium
+              backgroundColor='blue'
+              color='white'
+              title='Search by syndrome' 
+              onPress={()=>this.onButtonPress.bind(this)("Settings")} />
           </View>
 
         <Text> {this.state.text} </Text>
