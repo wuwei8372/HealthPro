@@ -12,12 +12,24 @@ import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
 
+import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
+import { Button } from 'react-native-elements';
+
+import { LinksStack } from '../navigation/MainTabNavigator';
+
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
 
+
+  
   render() {
+    const { navigate } = this.props.navigation;
+    buttonFuncion = () => {
+      
+      navigate('Links')
+    };
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
@@ -32,25 +44,18 @@ export default class HomeScreen extends React.Component {
             />
           </View>
 
-          <View style={styles.getStartedContainer}>
-            {this._maybeRenderDevelopmentModeWarning()}
-
-            <Text style={styles.getStartedText}>Get started by opening</Text>
-
-            <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-              <MonoText style={styles.codeHighlightText}>screens/HomeScreen.js</MonoText>
-            </View>
-
-            <Text style={styles.getStartedText}>
-              Change this text and your app will automatically reload.
-            </Text>
+          <View>
+            <FormLabel>Name</FormLabel>
+            <FormInput />
+             <FormValidationMessage></FormValidationMessage> 
+            <Button
+              medium
+              backgroundColor='blue'
+              color='white'
+              title='Search by name' 
+              onPress={buttonFuncion} />
           </View>
 
-          <View style={styles.helpContainer}>
-            <TouchableOpacity onPress={this._handleHelpPress} style={styles.helpLink}>
-              <Text style={styles.helpLinkText}>Help, it didn’t automatically reload!</Text>
-            </TouchableOpacity>
-          </View>
         </ScrollView>
 
         <View style={styles.tabBarInfoContainer}>
