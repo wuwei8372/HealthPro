@@ -21,15 +21,24 @@ export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
-
-
-  
-  render() {
-    const { navigate } = this.props.navigation;
-    buttonFuncion = () => {
-      
+  constructor(props) {
+    super(props);
+    this.state = {text: 'this is a test'};
+    this.buttonFunction = this.buttonFunction.bind(this);
+    
+  }
+  buttonFunction = (navigate) => {
+      this.setState({
+        text: 'I changed!'
+      });
       navigate('Links')
+
     };
+  
+
+  render() {
+    
+    
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
@@ -46,16 +55,20 @@ export default class HomeScreen extends React.Component {
 
           <View>
             <FormLabel>Name</FormLabel>
-            <FormInput />
-             <FormValidationMessage></FormValidationMessage> 
+            <FormInput 
+              placeholder="name"
+              onChangeText={(value) => this.setState({text: value})}
+            />
+
             <Button
               medium
               backgroundColor='blue'
               color='white'
               title='Search by name' 
-              onPress={buttonFuncion} />
+              onPress={()=>this.buttonFunction(this.props.navigation.navigate)} />
           </View>
 
+        <Text> {this.state.text} </Text>
         </ScrollView>
 
         <View style={styles.tabBarInfoContainer}>
