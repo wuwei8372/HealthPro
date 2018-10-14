@@ -27,10 +27,8 @@ export default class HomeScreen extends React.Component {
     this.buttonFunction = this.buttonFunction.bind(this);
     
   }
-  buttonFunction = (navigate) => {
-      this.setState({
-        text: 'I changed!'
-      });
+  buttonFunction = (navigate, text) => {
+      
       navigate('Links')
 
     };
@@ -65,7 +63,7 @@ export default class HomeScreen extends React.Component {
               backgroundColor='blue'
               color='white'
               title='Search by name' 
-              onPress={()=>this.buttonFunction(this.props.navigation.navigate)} />
+              onPress={()=>this.buttonFunction(this.props.navigation.navigate, this.text)} />
           </View>
 
         <Text> {this.state.text} </Text>
