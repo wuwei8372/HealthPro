@@ -33,9 +33,9 @@ export default class HomeScreen extends React.Component {
   }
 
   
-  onButtonPress(link) {
+  onButtonPress(link, text) {
     const { navigate } = this.props.navigation;
-    navigate(link);
+    navigate(link, {text: text});
   }
 
   render() {
@@ -67,7 +67,7 @@ export default class HomeScreen extends React.Component {
               backgroundColor='blue'
               color='white'
               title='Search by name' 
-              onPress={()=>this.onButtonPress.bind(this)("Links")} />
+              onPress={()=>this.onButtonPress.bind(this)("Links", this.text)} />
             <View/>
             
             <Button
