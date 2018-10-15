@@ -25,9 +25,9 @@ export default class LinksScreen extends React.Component {
   }
 
   componentDidMount() {
-    let products = db.ref('/products');
-
-    products.on('value', (snapshot) => {
+    const ref = db.ref('/products');
+    // console.log(this.props.navigation.getParam('text','No name'));
+    ref.orderByChild('name').equalTo(this.props.navigation.getParam('text','No name')).on('value', (snapshot) => {
         let data = snapshot.val();
         console.log(data);
         let items = Object.values(data);

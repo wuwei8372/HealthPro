@@ -30,13 +30,13 @@ const LinksStack = createStackNavigator({
 });
 
 LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link'}
-    />
-  ),
+  tabBarLabel: 'Products'
+  // tabBarIcon: ({ focused }) => (
+  //   <TabBarIcon
+  //     focused={focused}
+  //     name={Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link'}
+  //   />
+  // ),
 };
 
 const SettingsStack = createStackNavigator({
@@ -44,13 +44,13 @@ const SettingsStack = createStackNavigator({
 });
 
 SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? `ios-options${focused ? '' : '-outline'}` : 'md-options'}
-    />
-  ),
+  tabBarLabel: 'Syndrome'
+  // tabBarIcon: ({ focused }) => (
+  //   <TabBarIcon
+  //     focused={focused}
+  //     name={Platform.OS === 'ios' ? `ios-options${focused ? '' : '-outline'}` : 'md-options'}
+  //   />
+  // ),
 };
 
 export default createBottomTabNavigator({

@@ -10,30 +10,31 @@ export default class SettingsScreen extends React.Component {
     super(props);
     this.state = {
       syndromeList: [{
-        name: 'product1',
-        productList: '100',
-        description: 'I am a description'
-      },
-      {
-        name: 'product2',
-        productList: '200',
-        description: 'I am a description'
-      }
-    ]
+      //   name: 'product1',
+      //   productList: '100',
+      //   description: 'I am a description'
+      // },
+      // {
+      //   name: 'product2',
+      //   productList: '200',
+      //   description: 'I am a description'
+      // }
+      }]
     };
   }
 
   componentDidMount() {
-    let syndromes = db.ref('/syndromes');
-
-    syndromes.on('value', (snapshot) => {
+    console.log(this.props.text);
+    const ref = db.ref('/syndromes');
+    // console.log(this.props.navigation.getParam('text','No name'));
+    ref.orderByChild('name').equalTo(this.props.navigation.getParam('text','No name')).on('value', (snapshot) => {
         let data = snapshot.val();
-        console.log(data);
+        // console.log(data);
         let items = Object.values(data);
         // console.log(items);
         var list = [];
         items.map((item, index) => {
-            console.log(item.name);
+            // console.log(item.name);
             list.push({
               name: item.name,
               productList: item.productList,
