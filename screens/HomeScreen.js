@@ -35,7 +35,8 @@ export default class HomeScreen extends React.Component {
   
   onButtonPress(link) {
     const { navigate } = this.props.navigation;
-    navigate(link);
+    var passText = this.state.text;
+    navigate(link, {text: this.state.text});
   }
 
   render() {
@@ -56,29 +57,30 @@ export default class HomeScreen extends React.Component {
           </View>
 
           <View>
-            <FormLabel>Name</FormLabel>
+            <FormLabel>Please enter product name or syndrome name</FormLabel>
             <FormInput 
               placeholder="name"
               onChangeText={(value) => this.setState({text: value})}
             />
 
             <Button
+              style={styles.buttonStyle}
               medium
               backgroundColor='blue'
               color='white'
-              title='Search by name' 
+              title='Search by product name' 
               onPress={()=>this.onButtonPress.bind(this)("Links")} />
             <View/>
-            
+              
             <Button
               medium
               backgroundColor='blue'
               color='white'
-              title='Search by syndrome' 
+              title='Search by syndrome name' 
               onPress={()=>this.onButtonPress.bind(this)("Settings")} />
           </View>
 
-        <Text> {this.state.text} </Text>
+        <Text> </Text>
         </ScrollView>
 
         <View style={styles.tabBarInfoContainer}>
@@ -139,6 +141,9 @@ export default class HomeScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  buttonStyle: {
+    marginBottom: 10,
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',
