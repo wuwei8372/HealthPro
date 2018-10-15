@@ -10,23 +10,56 @@ export default class LinksScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productList: [{
-        name: 'product1',
-        price: '100',
-        description: 'I am a description'
-      },
-      {
-        name: 'product2',
-        price: '200',
-        description: 'I am a description'
-      }
-    ]
+      productList: []
     };
+  }
+
+  // componentWillReceiveProps(nextProps) {
+  //   const ref = db.ref('/products');
+  //   console.log(nextProps.navigation.getParam('text','No name'));
+  //   ref.orderByChild('name').equalTo(nextProps.navigation.getParam('text','No name')).on('value', (snapshot) => {
+  //       let data = snapshot.val();
+  //       console.log(data);
+  //       let items = Object.values(data);
+  //       // console.log(items);
+  //       var list = [];
+  //       items.map((item, index) => {
+  //           list.push({
+  //             name: item.name,
+  //             price: item.price,
+  //             description: item.description
+  //           });
+  //       });
+  //       this.setState({
+  //         productList: list
+  //       });
+  //    });
+  // }
+
+  componentDidUpdate(prevProps) {
+    if(prevProps.navigation.getParam('text', 'No name') !== this.props.navigation.getParam('text','No name')) {
+      const ref = db.ref('/products');
+      ref.orderByChild('name').equalTo(this.props.navigation.getParam('text','No name')).on('value', (snapshot) => {
+          let data = snapshot.val();
+          console.log(data);
+          let items = Object.values(data);
+          var list = [];
+          items.map((item, index) => {
+              list.push({
+                name: item.name,
+                price: item.price,
+                description: item.description
+              });
+          });
+          this.setState({
+            productList: list
+          });
+       });
+    }
   }
 
   componentDidMount() {
     const ref = db.ref('/products');
-    // console.log(this.props.navigation.getParam('text','No name'));
     ref.orderByChild('name').equalTo(this.props.navigation.getParam('text','No name')).on('value', (snapshot) => {
         let data = snapshot.val();
         console.log(data);
@@ -34,7 +67,6 @@ export default class LinksScreen extends React.Component {
         // console.log(items);
         var list = [];
         items.map((item, index) => {
-            console.log(item.name);
             list.push({
               name: item.name,
               price: item.price,
@@ -45,7 +77,7 @@ export default class LinksScreen extends React.Component {
           productList: list
         });
      });
-}
+  }
 
   render() {
     return (

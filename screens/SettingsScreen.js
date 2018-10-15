@@ -24,7 +24,7 @@ export default class SettingsScreen extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.text);
+    // console.log(this.props.text);
     const ref = db.ref('/syndromes');
     // console.log(this.props.navigation.getParam('text','No name'));
     ref.orderByChild('name').equalTo(this.props.navigation.getParam('text','No name')).on('value', (snapshot) => {

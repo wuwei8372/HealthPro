@@ -27,9 +27,7 @@ export default class HomeScreen extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {text: 'this is a test'};
-    // this.buttonFunction = this.buttonFunction.bind(this);
-    
+    this.state = {text: 'this is a test'};    
   }
 
   
