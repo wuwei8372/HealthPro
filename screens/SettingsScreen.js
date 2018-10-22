@@ -9,32 +9,42 @@ export default class SettingsScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      syndromeList: [{
-      //   name: 'product1',
-      //   productList: '100',
-      //   description: 'I am a description'
-      // },
-      // {
-      //   name: 'product2',
-      //   productList: '200',
-      //   description: 'I am a description'
-      // }
-      }]
+      syndromeList: []
     };
   }
 
-  componentDidMount() {
-    // console.log(this.props.text);
+  // componentDidMount() {
+  //   // console.log(this.props.text);
+  //   const ref = db.ref('/syndromes');
+  //   // console.log(this.props.navigation.getParam('text','No name'));
+  //   ref.orderByChild('name').equalTo(this.props.navigation.getParam('text','No name')).on('value', (snapshot) => {
+  //       let data = snapshot.val();
+  //       // console.log(data);
+  //       let items = Object.values(data);
+  //       // console.log(items);
+  //       var list = [];
+  //       items.map((item, index) => {
+  //           // console.log(item.name);
+  //           list.push({
+  //             name: item.name,
+  //             productList: item.productList,
+  //             description: item.description
+  //           });
+  //       });
+  //       this.setState({
+  //         syndromeList: list
+  //       });
+  //    });
+// }
+componentDidUpdate(prevProps) {
+  if(prevProps.navigation.getParam('text', 'No name') !== this.props.navigation.getParam('text','No name')) {
     const ref = db.ref('/syndromes');
-    // console.log(this.props.navigation.getParam('text','No name'));
     ref.orderByChild('name').equalTo(this.props.navigation.getParam('text','No name')).on('value', (snapshot) => {
         let data = snapshot.val();
-        // console.log(data);
+        console.log(data);
         let items = Object.values(data);
-        // console.log(items);
         var list = [];
         items.map((item, index) => {
-            // console.log(item.name);
             list.push({
               name: item.name,
               productList: item.productList,
@@ -45,6 +55,28 @@ export default class SettingsScreen extends React.Component {
           syndromeList: list
         });
      });
+  }
+}
+
+componentDidMount() {
+  const ref = db.ref('/syndromes');
+  ref.orderByChild('name').equalTo(this.props.navigation.getParam('text','No name')).on('value', (snapshot) => {
+      let data = snapshot.val();
+      console.log(data);
+      let items = Object.values(data);
+      // console.log(items);
+      var list = [];
+      items.map((item, index) => {
+          list.push({
+            name: item.name,
+            productList: item.productList,
+            description: item.description
+          });
+      });
+      this.setState({
+        syndromeList: list
+      });
+   });
 }
 
   render() {
@@ -52,9 +84,9 @@ export default class SettingsScreen extends React.Component {
       <View>
         {this.state.syndromeList.map(({ name, productList, description }, i) => (
         <View key={i}>
-            <Text >{name}</Text>
-            <Text >{description}</Text>
-            <Text >{productList}</Text>
+            <Text >Syndrome name: {name}</Text>
+            <Text >Syndrome description: {description}</Text>
+            <Text >Related products list: {productList}</Text>
         </View>
         ))}
       </View>
