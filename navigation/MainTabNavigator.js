@@ -7,6 +7,7 @@ import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import Register from '../screens/Register'
+import Login from '../screens/Login'
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
 });
@@ -58,4 +59,5 @@ export default createBottomTabNavigator({
   LinksStack,
   SettingsStack,
   Register,
+  Login,
 });

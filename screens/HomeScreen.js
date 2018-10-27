@@ -89,7 +89,7 @@ export default class HomeScreen extends React.Component {
         </View>
           
         <View style = {styles.container1}>
-          <TouchableHighlight onPress={() => this.onButtonPress.bind(this)("Register")} style = {styles.button} underlayColor = '#99d9f4'>
+          <TouchableHighlight onPress={() => this.onButtonPress.bind(this)("Login")} style = {styles.button} underlayColor = '#99d9f4'>
             <Text style = {styles.buttonText}>Login</Text>
             {/* <Button onPress={() => {Alert.alert('You tapped the button!');}} /> */}
           </TouchableHighlight>
