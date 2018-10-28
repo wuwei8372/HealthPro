@@ -6,27 +6,46 @@ import {
   View,
   TextInput,
   TouchableOpacity,
-  button,
+  Button,
   Alert,
  } from 'react-native';
+ import Firebase from 'firebase';
 //import { ExpoLinksView } from '@expo/samples';
 
 export default class Registration extends React.Component {
+  state = { email: '', password: '', errorMessage: null }
   static navigationOptions = {
     title: 'Login',
   };
+
+  handleLogin = () => {
+    const { email, password } = this.state
+    Firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(() => this.props.navigation.navigate('Home'))
+      .catch(error => this.setState({ errorMessage: error.message }))
+  }
 
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.regform}>
             <Text style={styles.header}> Login</Text>
+            {this.state.errorMessage &&
+            <Text style={{ color: 'red' }}>
+              {this.state.errorMessage}
+            </Text>}
             {/* <TextInput style={styles.TextInput} placeholder="Your name" /> */}
-            <TextInput style={styles.TextInput} placeholder="Your email" />
-            <TextInput style={styles.TextInput} placeholder="Your password" />
-            <TouchableOpacity style={styles.button} onPress={() => {Alert.alert('You tapped the Login button!');}}> 
-              <Text style={styles.btntxt}>Log in</Text>
-            </TouchableOpacity>
+            <TextInput style={styles.TextInput} placeholder="Your email" onChangeText={email => this.setState({ email })}
+          value={this.state.email}/>
+            <TextInput style={styles.TextInput} placeholder="Your password" onChangeText={password => this.setState({ password })}
+          value={this.state.password}/>
+            <Button title="Login" onPress={this.handleLogin} />
+            <Button
+              title="Don't have an account? Sign Up"
+              onPress={() => this.props.navigation.navigate('Register')}
+            />
         </View>
       </View>
     );
@@ -37,7 +56,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: '#36485f',
+    // backgroundColor: '#36485f',
+    backgroundColor: '#e0eaf9',
     paddingLeft: 60,
     paddingRight: 60,
   },
@@ -46,7 +66,7 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 24,
-    color: '#fff',
+    color: '#0c1016',
     paddingBottom: 10,
     marginBottom: 40,
     borderBottomColor: '#fff',
