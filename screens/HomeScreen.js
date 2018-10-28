@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
+  ActivityIndicator,
   View,
   //Button,
   TouchableHighlight,
@@ -14,6 +15,7 @@ import {
 import { WebBrowser } from 'expo';
 import { db } from '../db/db';
 import { MonoText } from '../components/StyledText';
+import Firebase from 'firebase';
 
 import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
 import { Button } from 'react-native-elements';
@@ -27,7 +29,10 @@ export default class HomeScreen extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {text: 'this is a test'};    
+    this.state = {
+      text: 'this is a test',
+      currentUser: null
+    };    
   }
 
   
@@ -36,10 +41,20 @@ export default class HomeScreen extends React.Component {
     navigate(link, {text: this.state.text});
   }
 
+  componentDidMount() {
+
+    // Firebase.auth().onAuthStateChanged(user => {
+    //   this.props.navigation.navigate(user ? 'Home' : 'Login')
+    // })
+    const { currentUser } = Firebase.auth()
+    this.setState({ currentUser })
+  }
+
   render() {
-    
+    const { currentUser } = this.state;
     
     return (
+      
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           <View style={styles.welcomeContainer}>
@@ -87,8 +102,11 @@ export default class HomeScreen extends React.Component {
             <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
           </View> */}
         </View>
-          
+        {/* <ActivityIndicator size="large" />  */}
         <View style = {styles.container1}>
+          <Text>
+            Hi {currentUser && currentUser.email}!
+          </Text>
           <TouchableHighlight onPress={() => this.onButtonPress.bind(this)("Login")} style = {styles.button} underlayColor = '#99d9f4'>
             <Text style = {styles.buttonText}>Login</Text>
             {/* <Button onPress={() => {Alert.alert('You tapped the button!');}} /> */}
