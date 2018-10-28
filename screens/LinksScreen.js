@@ -14,6 +14,11 @@ export default class LinksScreen extends React.Component {
       tableHead: ['Name', 'Price', 'Description', 'Link'],
       productList: []
     };
+    fetch("https://arcane-river-25232.herokuapp.com/vitamin D").then(function(response){return response.json()})
+    .then(data=> {
+      this.setState({productList:data[0].searchResult[0].item});
+      // console.log(data);
+    });
   }
 
   // componentWillReceiveProps(nextProps) {
@@ -38,48 +43,48 @@ export default class LinksScreen extends React.Component {
   //    });
   // }
 
-  componentDidUpdate(prevProps) {
-    if(prevProps.navigation.getParam('text', 'No name') !== this.props.navigation.getParam('text','No name')) {
-      const ref = db.ref('/products');
-      ref.orderByChild('name').equalTo(this.props.navigation.getParam('text','No name')).on('value', (snapshot) => {
-          let data = snapshot.val();
-          console.log(data);
-          let items = Object.values(data);
-          var list = [];
-          items.map((item, index) => {
-              list.push({
-                name: item.name,
-                price: item.price,
-                description: item.description
-              });
-          });
-          this.setState({
-            productList: list
-          });
-       });
-    }
-  }
+//   componentDidUpdate(prevProps) {
+//     if(prevProps.navigation.getParam('text', 'No name') !== this.props.navigation.getParam('text','No name')) {
+//       const ref = db.ref('/products');
+//       ref.orderByChild('name').equalTo(this.props.navigation.getParam('text','No name')).on('value', (snapshot) => {
+//           let data = snapshot.val();
+//           console.log(data);
+//           let items = Object.values(data);
+//           var list = [];
+//           items.map((item, index) => {
+//               list.push({
+//                 name: item.name,
+//                 price: item.price,
+//                 description: item.description
+//               });
+//           });
+//           this.setState({
+//             productList: list
+//           });
+//        });
+//     }
+//   }
 
-  componentDidMount() {
-    const ref = db.ref('/products');
-    ref.orderByChild('name').equalTo(this.props.navigation.getParam('text','No name')).on('value', (snapshot) => {
-        let data = snapshot.val();
-        console.log(data);
-        let items = Object.values(data);
-        // console.log(items);
-        var list = [];
-        items.map((item, index) => {
-            list.push({
-              name: item.name,
-              price: item.price,
-              description: item.description
-            });
-        });
-        this.setState({
-          productList: list
-        });
-     });
-  }
+//   componentDidMount() {
+//     const ref = db.ref('/products');
+//     ref.orderByChild('name').equalTo(this.props.navigation.getParam('text','No name')).on('value', (snapshot) => {
+//         let data = snapshot.val();
+//         console.log(data);
+//         let items = Object.values(data);
+//         // console.log(items);
+//         var list = [];
+//         items.map((item, index) => {
+//             list.push({
+//               name: item.name,
+//               price: item.price,
+//               description: item.description
+//             });
+//         });
+//         this.setState({
+//           productList: list
+//         });
+//      });
+//   }
 
   render() {
     console.log(this.state.productList);
@@ -100,10 +105,10 @@ export default class LinksScreen extends React.Component {
             
             this.state.productList.map((curtProduct, index) => (
               
-              <TableWrapper style={styles.row}>
-                <Cell data = {curtProduct.name}/>
-                <Cell data = {curtProduct.price}/>
-                <Cell data = {curtProduct.description}/>
+              <TableWrapper style={styles.row} key={index}>
+                <Cell data = {curtProduct.title}/>
+                <Cell data = {curtProduct.sellingStatus[0].currentPrice[0]["@currencyId"]+curtProduct.sellingStatus[0].currentPrice[0]["__value__"]}/>
+                <Cell data = {curtProduct.primaryCategory[0]["categoryName"][0]}/>
                 <Cell data = "link"/>
               </TableWrapper>
             ))
