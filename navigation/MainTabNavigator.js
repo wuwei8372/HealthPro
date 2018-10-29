@@ -8,6 +8,7 @@ import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import Register from '../screens/Register'
 import Login from '../screens/Login'
+import Nutrition from '../screens/NutritionScreen'
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
 });
@@ -60,4 +61,5 @@ export default createBottomTabNavigator({
   SettingsStack,
   Register,
   Login,
+  Nutrition,
 });
