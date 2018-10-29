@@ -2,19 +2,32 @@ import React from 'react';
 import { ScrollView, StyleSheet, View, Text } from 'react-native';
 import { db } from '../db/db';
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
-
+import AwesomeButton from 'react-native-really-awesome-button';
+import { StackActions, NavigationActions } from 'react-navigation';
+import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
 export default class LinksScreen extends React.Component {
   static navigationOptions = {
-    title: 'Links',
+    title: 'Search',
   };
 
   constructor(props) {
     super(props);
+    
     this.state = {
       tableHead: ['Name', 'Price', 'Description', 'Link'],
+      text: this.props.navigation.getParam('text','Please enter search name'),
       productList: []
     };
-    var link = "https://arcane-river-25232.herokuapp.com/" + this.props.navigation.getParam('text','No name');
+    
+    // var link = "https://arcane-river-25232.herokuapp.com/" + this.props.navigation.getParam('text','No name');
+    // fetch(link).then(function(response){return response.json()})
+    // .then(data=> {
+    //   this.setState({productList:data[0].searchResult[0].item});
+    //   // console.log(data);
+    // });
+  }
+  search = () => {
+    var link = "https://arcane-river-25232.herokuapp.com/" + this.state.text;
     fetch(link).then(function(response){return response.json()})
     .then(data=> {
       this.setState({productList:data[0].searchResult[0].item});
@@ -22,13 +35,13 @@ export default class LinksScreen extends React.Component {
     });
   }
 
-  componentWillReceiveProps(nextProps) {
-    var link = "https://arcane-river-25232.herokuapp.com/" + this.props.navigation.getParam('text','No name');
-    fetch(link).then(function(response){return response.json()})
-    .then(data=> {
-      this.setState({productList:data[0].searchResult[0].item});
-      // console.log(data);
-    });
+  // componentWillReceiveProps(nextProps) {
+  //   var link = "https://arcane-river-25232.herokuapp.com/" + this.props.navigation.getParam('text','No name');
+  //   fetch(link).then(function(response){return response.json()})
+  //   .then(data=> {
+  //     this.setState({productList:data[0].searchResult[0].item});
+  //     // console.log(data);
+  //   });
     // const ref = db.ref('/products');
     // console.log(nextProps.navigation.getParam('text','No name'));
     // ref.orderByChild('name').equalTo(nextProps.navigation.getParam('text','No name')).on('value', (snapshot) => {
@@ -48,15 +61,15 @@ export default class LinksScreen extends React.Component {
     //       productList: list
     //     });
     //  });
-  }
+  // }
 
-  componentDidUpdate(prevProps) {
-    var link = "https://arcane-river-25232.herokuapp.com/" + this.props.navigation.getParam('text','No name');
-    fetch(link).then(function(response){return response.json()})
-    .then(data=> {
-      this.setState({productList:data[0].searchResult[0].item});
-      // console.log(data);
-    });
+  // componentDidUpdate(prevProps) {
+  //   var link = "https://arcane-river-25232.herokuapp.com/" + this.props.navigation.getParam('text','No name');
+  //   fetch(link).then(function(response){return response.json()})
+  //   .then(data=> {
+  //     this.setState({productList:data[0].searchResult[0].item});
+  //     // console.log(data);
+  //   });
     // if(prevProps.navigation.getParam('text', 'No name') !== this.props.navigation.getParam('text','No name')) {
     //   const ref = db.ref('/products');
     //   ref.orderByChild('name').equalTo(this.props.navigation.getParam('text','No name')).on('value', (snapshot) => {
@@ -76,10 +89,15 @@ export default class LinksScreen extends React.Component {
     //       });
     //    });
     // }
-  }
+  // }
 
   // componentDidMount() {
-    
+  //   var link = "https://arcane-river-25232.herokuapp.com/" + this.props.navigation.getParam('text','No name');
+  //   fetch(link).then(function(response){return response.json()})
+  //   .then(data=> {
+  //     this.setState({productList:data[0].searchResult[0].item});
+  //     // console.log(data);
+  //   });
   //   const ref = db.ref('/products');
   //   ref.orderByChild('name').equalTo(this.props.navigation.getParam('text','No name')).on('value', (snapshot) => {
   //       let data = snapshot.val();
@@ -113,9 +131,22 @@ export default class LinksScreen extends React.Component {
     return (
       
       <View style={styles.container}>
+      <AwesomeButton
+              backgroundColor="#ADD8E6"
+              textColor = "#FFFFFF"
+              onPress={this.search}
+              >
+              <Text>search</Text>
+          </AwesomeButton>
+          <FormInput
+              placeholder = 'Please enter name here'
+              value = {this.props.navigation.getParam('text','No name')}
+              onChangeText={(value) => this.setState({text: value})}
+            />
+        <ScrollView>
         <Table borderStyle={{borderColor: 'transparent'}}>
           <Row data={state.tableHead} style={styles.head} textStyle={styles.text}/>
-          {
+          {this.state.productList === null ? <View>Loading</View> : 
             
             this.state.productList.map((curtProduct, index) => (
               
@@ -128,6 +159,7 @@ export default class LinksScreen extends React.Component {
             ))
           }
         </Table>
+        </ScrollView>
       </View>
     )
   }

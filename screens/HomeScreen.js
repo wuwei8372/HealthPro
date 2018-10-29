@@ -42,6 +42,7 @@ export default class HomeScreen extends React.Component {
     const { navigate } = this.props.navigation;
     navigate(link, {text: this.state.text});
   }
+  
 
   componentDidMount() {
 
@@ -97,15 +98,42 @@ export default class HomeScreen extends React.Component {
               Hi {currentUser && currentUser.email}!
 
             </Text>
+            <Text style = {{width: 300, height: 30}}>
+              This is your most frequently searched items:
+            </Text>
+            <AwesomeButton
+                backgroundColor="#91d6f2"
+                onPress={()=>{
+                  const { navigate } = this.props.navigation;
+                  navigate("Links", {text: 'Cough'});
+                  }
+                }
+                >
+
+                <Text>Cough</Text>
+            </AwesomeButton>
+            <AwesomeButton
+                backgroundColor="#91d6f2"
+                onPress={()=>{
+                  const { navigate } = this.props.navigation;
+                  navigate("Links", {text: 'Vitamin D'});
+                  }
+                }
+                >
+                <Text>Vitamin D</Text>
+            </AwesomeButton><AwesomeButton
+                backgroundColor="#91d6f2"
+                onPress={()=>{
+                  const { navigate } = this.props.navigation;
+                  navigate("Links", {text: 'Vitamin C'});
+                  }
+                }
+                >
+                <Text>Vitamin C</Text>
+            </AwesomeButton>
 
             </View>
-
-
-
-
         </View>
-
-        <Text> </Text>
         </ScrollView>
 
         <View style={styles.tabBarInfoContainer}>
@@ -115,19 +143,18 @@ export default class HomeScreen extends React.Component {
             <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
           </View> */}
         </View>
-        {/* <ActivityIndicator size="large" />  */}
-        <View style = {styles.container1}>
+
+        {/* <View style = {styles.container1}>
 
 
           <TouchableHighlight onPress={() => this.onButtonPress.bind(this)("Login")} style = {styles.button} underlayColor = '#99d9f4'>
             <Text style = {styles.buttonText}>Login</Text>
-            {/* <Button onPress={() => {Alert.alert('You tapped the button!');}} /> */}
           </TouchableHighlight>
 
           <TouchableHighlight onPress={()=>this.onButtonPress.bind(this)("Register")} style = {styles.button} underlayColor = '#99d9f4' >
             <Text style = {styles.buttonText}>Register</Text>
           </TouchableHighlight>
-        </View>
+        </View> */}
 
       </View>
     );
