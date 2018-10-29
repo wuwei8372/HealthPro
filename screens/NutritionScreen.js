@@ -3,6 +3,10 @@ import { FlatList, ScrollView, StyleSheet, View, Text, Button, TextInput, Toucha
 import { db } from '../db/db';
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
 
+import AwesomeButton from 'react-native-really-awesome-button';
+
+
+
 export default class LinksScreen extends React.Component {
   static navigationOptions = {
     title: 'Nutrition',
@@ -44,12 +48,16 @@ export default class LinksScreen extends React.Component {
          underlineColorAndroid="transparent"
        />
 
-       <View style={[{ width: "93%", margin: 15, backgroundColor: "green" }]}>
-         <Button
-         onPress={this.buttonClickListener}
-         title="Check Nutrition"
-         color="#00B0FF"
-         />
+       <View style={[{ height: 45, width: "93%", margin: 15, backgroundColor: "green", }]}>
+          <View style = {styles.container}>
+             <AwesomeButton
+                 backgroundColor="#ADFF2F"
+                 //width = "25"
+                 onPress={this.buttonClickListener}>
+                 <Text>Check Value</Text>
+             </AwesomeButton>
+         </View>
+
        </View>
      </View>
    );

@@ -22,6 +22,8 @@ import { Button } from 'react-native-elements';
 
 import { LinksStack } from '../navigation/MainTabNavigator';
 
+import AwesomeButton from 'react-native-really-awesome-button';
+
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
@@ -32,10 +34,10 @@ export default class HomeScreen extends React.Component {
     this.state = {
       text: 'this is a test',
       currentUser: null
-    };    
+    };
   }
 
-  
+
   onButtonPress(link) {
     const { navigate } = this.props.navigation;
     navigate(link, {text: this.state.text});
@@ -52,9 +54,9 @@ export default class HomeScreen extends React.Component {
 
   render() {
     const { currentUser } = this.state;
-    
+
     return (
-      
+
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           <View style={styles.welcomeContainer}>
@@ -68,29 +70,40 @@ export default class HomeScreen extends React.Component {
             />
           </View>
 
-          <View>
+          <View style = {styles.regform}>
             <FormLabel>Please enter product name or syndrome name</FormLabel>
-            <FormInput 
+            <FormInput
               placeholder="name"
               onChangeText={(value) => this.setState({text: value})}
             />
+            <View style = {styles.awesomeButton}>
+            <AwesomeButton
+                backgroundColor="#ADFF2F"
 
-            <Button
-              style={styles.buttonStyle}
-              medium
-              backgroundColor='blue'
-              color='white'
-              title='Search by product name' 
-              onPress={()=>this.onButtonPress.bind(this)("Links")} />
-            <View/>
-              
-            <Button
-              medium
-              backgroundColor='blue'
-              color='white'
-              title='Search by syndrome name' 
-              onPress={()=>this.onButtonPress.bind(this)("Settings")} />
-          </View>
+                onPress={()=>this.onButtonPress.bind(this)("Links")}
+                >
+                <Text>Search by product name</Text>
+            </AwesomeButton>
+
+
+            <AwesomeButton
+                backgroundColor="#ADFF2F"
+                onPress={()=>this.onButtonPress.bind(this)("Settings")}
+                >
+                <Text>Search by syndrome name</Text>
+            </AwesomeButton>
+
+            <Text style = {{width: 150, height: 30, backgroundColor: 'powderblue'}}>
+              Hi {currentUser && currentUser.email}!
+
+            </Text>
+
+            </View>
+
+
+
+
+        </View>
 
         <Text> </Text>
         </ScrollView>
@@ -104,9 +117,8 @@ export default class HomeScreen extends React.Component {
         </View>
         {/* <ActivityIndicator size="large" />  */}
         <View style = {styles.container1}>
-          <Text>
-            Hi {currentUser && currentUser.email}!
-          </Text>
+
+
           <TouchableHighlight onPress={() => this.onButtonPress.bind(this)("Login")} style = {styles.button} underlayColor = '#99d9f4'>
             <Text style = {styles.buttonText}>Login</Text>
             {/* <Button onPress={() => {Alert.alert('You tapped the button!');}} /> */}
@@ -114,7 +126,7 @@ export default class HomeScreen extends React.Component {
 
           <TouchableHighlight onPress={()=>this.onButtonPress.bind(this)("Register")} style = {styles.button} underlayColor = '#99d9f4' >
             <Text style = {styles.buttonText}>Register</Text>
-          </TouchableHighlight> 
+          </TouchableHighlight>
         </View>
 
       </View>
@@ -265,5 +277,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
+  },
+  regform: {
+    alignSelf: 'stretch',
+  },
+  awesomeButton:{
+    width: 50,
+    alignSelf: 'center',
+    //justifyContent: 'center',
+    alignItems: 'center',
+
   }
 });

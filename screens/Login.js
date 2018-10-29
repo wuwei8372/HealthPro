@@ -1,8 +1,8 @@
 import React from 'react';
-import { 
-  ScrollView, 
-  StyleSheet, 
-  Text, 
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
   View,
   TextInput,
   TouchableOpacity,
@@ -11,6 +11,7 @@ import {
  } from 'react-native';
  import Firebase from 'firebase';
 //import { ExpoLinksView } from '@expo/samples';
+import AwesomeButton from 'react-native-really-awesome-button';
 
 export default class Registration extends React.Component {
   state = { email: '', password: '', errorMessage: null }
@@ -41,11 +42,24 @@ export default class Registration extends React.Component {
           value={this.state.email}/>
             <TextInput style={styles.TextInput} placeholder="Your password" onChangeText={password => this.setState({ password })}
           value={this.state.password}/>
-            <Button title="Login" onPress={this.handleLogin} />
-            <Button
-              title="Don't have an account? Sign Up"
+
+          <AwesomeButton
+              backgroundColor="#ADD8E6"
+              textColor = "#FFFFFF"
+              onPress={this.handleLogin}
+              >
+              <Text>Login</Text>
+          </AwesomeButton>
+
+          <AwesomeButton
+              backgroundColor="#ADD8E6"
+              textColor = "#FFFFFF"
               onPress={() => this.props.navigation.navigate('Register')}
-            />
+              >
+              <Text textColor="#FFFFFF">Don't have an account?Sign Up</Text>
+          </AwesomeButton>
+
+
         </View>
       </View>
     );
@@ -85,7 +99,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 20,
     //backgroundColor: 'blue',
-    marginTop: 30, 
+    marginTop: 30,
   },
   btntxt: {
     color: '#fff',
