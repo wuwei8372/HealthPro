@@ -14,17 +14,74 @@ export default class LinksScreen extends React.Component {
       tableHead: ['Name', 'Price', 'Description', 'Link'],
       productList: []
     };
-    fetch("https://arcane-river-25232.herokuapp.com/vitamin D").then(function(response){return response.json()})
+    var link = "https://arcane-river-25232.herokuapp.com/" + this.props.navigation.getParam('text','No name');
+    fetch(link).then(function(response){return response.json()})
     .then(data=> {
       this.setState({productList:data[0].searchResult[0].item});
       // console.log(data);
     });
   }
 
-  // componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps) {
+    var link = "https://arcane-river-25232.herokuapp.com/" + this.props.navigation.getParam('text','No name');
+    fetch(link).then(function(response){return response.json()})
+    .then(data=> {
+      this.setState({productList:data[0].searchResult[0].item});
+      // console.log(data);
+    });
+    // const ref = db.ref('/products');
+    // console.log(nextProps.navigation.getParam('text','No name'));
+    // ref.orderByChild('name').equalTo(nextProps.navigation.getParam('text','No name')).on('value', (snapshot) => {
+    //     let data = snapshot.val();
+    //     console.log(data);
+    //     let items = Object.values(data);
+    //     // console.log(items);
+    //     var list = [];
+    //     items.map((item, index) => {
+    //         list.push({
+    //           name: item.name,
+    //           price: item.price,
+    //           description: item.description
+    //         });
+    //     });
+    //     this.setState({
+    //       productList: list
+    //     });
+    //  });
+  }
+
+  componentDidUpdate(prevProps) {
+    var link = "https://arcane-river-25232.herokuapp.com/" + this.props.navigation.getParam('text','No name');
+    fetch(link).then(function(response){return response.json()})
+    .then(data=> {
+      this.setState({productList:data[0].searchResult[0].item});
+      // console.log(data);
+    });
+    // if(prevProps.navigation.getParam('text', 'No name') !== this.props.navigation.getParam('text','No name')) {
+    //   const ref = db.ref('/products');
+    //   ref.orderByChild('name').equalTo(this.props.navigation.getParam('text','No name')).on('value', (snapshot) => {
+    //       let data = snapshot.val();
+    //       console.log(data);
+    //       let items = Object.values(data);
+    //       var list = [];
+    //       items.map((item, index) => {
+    //           list.push({
+    //             name: item.name,
+    //             price: item.price,
+    //             description: item.description
+    //           });
+    //       });
+    //       this.setState({
+    //         productList: list
+    //       });
+    //    });
+    // }
+  }
+
+  // componentDidMount() {
+    
   //   const ref = db.ref('/products');
-  //   console.log(nextProps.navigation.getParam('text','No name'));
-  //   ref.orderByChild('name').equalTo(nextProps.navigation.getParam('text','No name')).on('value', (snapshot) => {
+  //   ref.orderByChild('name').equalTo(this.props.navigation.getParam('text','No name')).on('value', (snapshot) => {
   //       let data = snapshot.val();
   //       console.log(data);
   //       let items = Object.values(data);
@@ -42,49 +99,6 @@ export default class LinksScreen extends React.Component {
   //       });
   //    });
   // }
-
-//   componentDidUpdate(prevProps) {
-//     if(prevProps.navigation.getParam('text', 'No name') !== this.props.navigation.getParam('text','No name')) {
-//       const ref = db.ref('/products');
-//       ref.orderByChild('name').equalTo(this.props.navigation.getParam('text','No name')).on('value', (snapshot) => {
-//           let data = snapshot.val();
-//           console.log(data);
-//           let items = Object.values(data);
-//           var list = [];
-//           items.map((item, index) => {
-//               list.push({
-//                 name: item.name,
-//                 price: item.price,
-//                 description: item.description
-//               });
-//           });
-//           this.setState({
-//             productList: list
-//           });
-//        });
-//     }
-//   }
-
-//   componentDidMount() {
-//     const ref = db.ref('/products');
-//     ref.orderByChild('name').equalTo(this.props.navigation.getParam('text','No name')).on('value', (snapshot) => {
-//         let data = snapshot.val();
-//         console.log(data);
-//         let items = Object.values(data);
-//         // console.log(items);
-//         var list = [];
-//         items.map((item, index) => {
-//             list.push({
-//               name: item.name,
-//               price: item.price,
-//               description: item.description
-//             });
-//         });
-//         this.setState({
-//           productList: list
-//         });
-//      });
-//   }
 
   render() {
     console.log(this.state.productList);
