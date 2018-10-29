@@ -61,5 +61,5 @@ export default createBottomTabNavigator({
   LinksStack,
   SettingsStack,
   Register,
-  NutritionScreen,
+  Nutrition,
 });
