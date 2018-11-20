@@ -7,7 +7,7 @@ import { StackActions, NavigationActions } from 'react-navigation';
 import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
 export default class LinksScreen extends React.Component {
   static navigationOptions = {
-    title: 'Search',
+    title: 'Product Search',
   };
 
   constructor(props) {
