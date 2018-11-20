@@ -27,12 +27,17 @@ export default class LinksScreen extends React.Component {
     // });
   }
   search = () => {
+    // console.log(this.refs.myInput.value);
+    console.log(this.state.text);
     var link = "https://arcane-river-25232.herokuapp.com/" + this.state.text;
     fetch(link).then(function(response){return response.json()})
     .then(data=> {
       this.setState({productList:data[0].searchResult[0].item});
       // console.log(data);
     });
+  }
+  componentWillReceiveProps(nextProps) {
+    this.setState({text: nextProps.navigation.getParam('text','Please enter search name')});
   }
 
   // componentWillReceiveProps(nextProps) {
@@ -119,7 +124,7 @@ export default class LinksScreen extends React.Component {
   // }
 
   render() {
-    console.log(this.state.productList);
+    // console.log(this.state.productList);
     const state = this.state;
     const element = (data, index) => (
       <TouchableOpacity>
@@ -141,6 +146,7 @@ export default class LinksScreen extends React.Component {
           <FormInput
               placeholder = 'Please enter name here'
               value = {this.props.navigation.getParam('text','No name')}
+              ref="myInput"
               onChangeText={(value) => this.setState({text: value})}
             />
         <ScrollView>
