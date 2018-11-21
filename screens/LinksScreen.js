@@ -39,6 +39,9 @@ export default class LinksScreen extends React.Component {
   componentWillReceiveProps(nextProps) {
     this.setState({text: nextProps.navigation.getParam('text','Please enter search name')});
   }
+  componentDidMount() {
+    this.setState({text: this.props.navigation.getParam('text','Please enter search name')});
+  }
 
   // componentWillReceiveProps(nextProps) {
   //   var link = "https://arcane-river-25232.herokuapp.com/" + this.props.navigation.getParam('text','No name');

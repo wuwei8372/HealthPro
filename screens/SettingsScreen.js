@@ -39,6 +39,9 @@ export default class SettingsScreen extends React.Component {
   componentWillReceiveProps(nextProps) {
     this.setState({text: nextProps.navigation.getParam('text','Please enter search name')});
   }
+  componentDidMount() {
+    this.setState({text: this.props.navigation.getParam('text','Please enter search name')});
+  }
 
   
 
