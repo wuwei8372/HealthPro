@@ -37,8 +37,21 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Your message to user when the camera is accessed for the first time</string>
+
+	<!-- Include this only if you are planning to use the camera roll -->
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Your message to user when the photo library is accessed for the first time</string>
+
+	<!-- Include this only if you are planning to use the microphone for video recording -->
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Your message to user when the microphone is accessed for the first time</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Description of why you require the use of the microphone</string>
+	<!-- Include this only if you are planning to use the camera roll -->
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Your message to user when the photo library is accessed for the first time</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>Description of why you require the use of the speech recognition</string>
 	<key>Fabric</key>

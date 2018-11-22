@@ -10,6 +10,8 @@ import expolib_v1.okhttp3.OkHttpClient;
 
 // Needed for `react-native link`
 // import com.facebook.react.ReactApplication;
+import com.fetchsky.RNTextDetector.RNTextDetectorPackage;
+import org.reactnative.camera.RNCameraPackage;
 import com.wenkesj.voice.VoicePackage;
 
 public class MainApplication extends ExpoApplication {
@@ -27,6 +29,8 @@ public class MainApplication extends ExpoApplication {
 
         // Needed for `react-native link`
         // new MainReactPackage(),
+            new RNTextDetectorPackage(),
+            new RNCameraPackage(),
             new VoicePackage()
     );
   }

@@ -182,6 +182,14 @@ PODS:
   - lottie-ios (2.5.2)
   - React (0.55.4):
     - React/Core (= 0.55.4)
+  - react-native-camera (1.4.3):
+    - React
+    - react-native-camera/RCT (= 1.4.3)
+    - react-native-camera/RN (= 1.4.3)
+  - react-native-camera/RCT (1.4.3):
+    - React
+  - react-native-camera/RN (1.4.3):
+    - React
   - React/ART (0.55.4):
     - React/Core
   - React/Core (0.55.4):
@@ -228,7 +236,11 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
+  - RNTextDetector (0.0.6):
+    - React
+    - TesseractOCRiOS (~> 4.0.0)
   - Stripe (13.0.3)
+  - TesseractOCRiOS (4.0.0)
   - yoga (0.55.4.React)
 
 DEPENDENCIES:
@@ -265,6 +277,7 @@ DEPENDENCIES:
   - EXSMS (from `../node_modules/expo-sms/ios`)
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
+  - react-native-camera (from `../node_modules/react-native-camera`)
   - React/ART (from `../node_modules/react-native`)
   - React/Core (from `../node_modules/react-native`)
   - React/CxxBridge (from `../node_modules/react-native`)
@@ -278,6 +291,7 @@ DEPENDENCIES:
   - React/RCTText (from `../node_modules/react-native`)
   - React/RCTVibration (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
+  - RNTextDetector (from `../node_modules/react-native-text-detector/ios`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -307,6 +321,7 @@ SPEC REPOS:
     - JKBigInteger2
     - lottie-ios
     - Stripe
+    - TesseractOCRiOS
 
 EXTERNAL SOURCES:
   DoubleConversion:
@@ -378,6 +393,10 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
   React:
     :path: "../node_modules/react-native"
+  react-native-camera:
+    :path: "../node_modules/react-native-camera"
+  RNTextDetector:
+    :path: "../node_modules/react-native-text-detector/ios"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -445,9 +464,12 @@ SPEC CHECKSUMS:
   JKBigInteger2: e91672035c42328c48b7dd015b66812ddf40ca9b
   lottie-ios: 3fef45d3fabe63e3c7c2eb603dd64ddfffc73062
   React: aa2040dbb6f317b95314968021bd2888816e03d5
+  react-native-camera: eac1e8cc7523273a2a11956d0e5dac08296cf4b0
+  RNTextDetector: 8d5be966fb2bfe907703ef37f6fa742180232804
   Stripe: 76c203e21555089b708e6cbe972a3e3baf1ab4d8
+  TesseractOCRiOS: 90638afbe43d082433f2e76b384c7901d23956df
   yoga: a23273df0088bf7f2bb7e5d7b00044ea57a2a54a
 
-PODFILE CHECKSUM: e8bcb13cd52501d1dd1d86dd835bd87f5fc3e599
+PODFILE CHECKSUM: dea539768b5d0eeb71e9817688990902bd845ce9
 
 COCOAPODS: 1.5.3

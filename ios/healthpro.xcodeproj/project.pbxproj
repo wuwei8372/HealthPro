@@ -20,6 +20,10 @@
 		B5DB04801F3A684600E91581 /* shell-app-manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = B5DB047E1F3A684600E91581 /* shell-app-manifest.json */; };
 		B5DB04811F3A684600E91581 /* shell-app.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B5DB047F1F3A684600E91581 /* shell-app.bundle */; };
 		EBB8117C1BFA0514F79CAF74 /* libPods-healthpro.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C4A88D15726AD99E8A257BC7 /* libPods-healthpro.a */; };
+		FC1E752721A6F76200EDE4AF /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FC1E752621A6F76200EDE4AF /* libc++.tbd */; };
+		FC1E752921A6F76F00EDE4AF /* libc++.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FC1E752821A6F76F00EDE4AF /* libc++.1.tbd */; };
+		FC1E752B21A6F77A00EDE4AF /* libc++abi.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FC1E752A21A6F77A00EDE4AF /* libc++abi.tbd */; };
+		FC7AABCB21A65F4500B8EC65 /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = FC7AABCA21A65F4500B8EC65 /* tessdata */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +55,12 @@
 		B5DB047F1F3A684600E91581 /* shell-app.bundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "shell-app.bundle"; sourceTree = "<group>"; };
 		C4A88D15726AD99E8A257BC7 /* libPods-healthpro.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-healthpro.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4B9AD4420DD434FAF7D4BB3 /* Voice.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = Voice.xcodeproj; path = "../node_modules/react-native-voice/ios/Voice.xcodeproj"; sourceTree = "<group>"; };
+		DF057F14266A4D0AAD41506E /* libRNTextDetector.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNTextDetector.a; sourceTree = "<group>"; };
 		EC082A74F9724BED91E50803 /* libVoice.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libVoice.a; sourceTree = "<group>"; };
+		FC1E752621A6F76200EDE4AF /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		FC1E752821A6F76F00EDE4AF /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "usr/lib/libc++.1.tbd"; sourceTree = SDKROOT; };
+		FC1E752A21A6F77A00EDE4AF /* libc++abi.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++abi.tbd"; path = "usr/lib/libc++abi.tbd"; sourceTree = SDKROOT; };
+		FC7AABCA21A65F4500B8EC65 /* tessdata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tessdata; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +68,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC1E752B21A6F77A00EDE4AF /* libc++abi.tbd in Frameworks */,
+				FC1E752921A6F76F00EDE4AF /* libc++.1.tbd in Frameworks */,
+				FC1E752721A6F76200EDE4AF /* libc++.tbd in Frameworks */,
 				EBB8117C1BFA0514F79CAF74 /* libPods-healthpro.a in Frameworks */,
 				1B04FBC2E94F48DC9BB2E488 /* libVoice.a in Frameworks */,
 			);
@@ -70,6 +82,9 @@
 		1A42804E64B7E9E0AB8B6799 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FC1E752A21A6F77A00EDE4AF /* libc++abi.tbd */,
+				FC1E752821A6F76F00EDE4AF /* libc++.1.tbd */,
+				FC1E752621A6F76200EDE4AF /* libc++.tbd */,
 				C4A88D15726AD99E8A257BC7 /* libPods-healthpro.a */,
 			);
 			name = Frameworks;
@@ -107,6 +122,7 @@
 		B56386431DB9693800A0598C /* healthpro */ = {
 			isa = PBXGroup;
 			children = (
+				FC7AABCA21A65F4500B8EC65 /* tessdata */,
 				B56386471DB9693800A0598C /* AppDelegate.h */,
 				B56386481DB9693800A0598C /* AppDelegate.m */,
 				B56386501DB9693800A0598C /* Assets.xcassets */,
@@ -144,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				EC082A74F9724BED91E50803 /* libVoice.a */,
+				DF057F14266A4D0AAD41506E /* libRNTextDetector.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -242,6 +259,7 @@
 				B5693E921FABD46800307FA4 /* launch_icon.png in Resources */,
 				B5693E8E1FABD16A00307FA4 /* LaunchScreen.xib in Resources */,
 				B5DB04801F3A684600E91581 /* shell-app-manifest.json in Resources */,
+				FC7AABCB21A65F4500B8EC65 /* tessdata in Resources */,
 				B5DB04811F3A684600E91581 /* shell-app.bundle in Resources */,
 				B56386511DB9693800A0598C /* Assets.xcassets in Resources */,
 			);
@@ -452,11 +470,13 @@
 			baseConfigurationReference = 2C1548D9E4CB1AEFA5CCAE6D /* Pods-healthpro.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LIBRARY = "compiler-default";
 				DEVELOPMENT_TEAM = C8D8QTF339;
 				INFOPLIST_FILE = "$(SRCROOT)/healthpro/Supporting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = iosidentifier;
@@ -470,11 +490,13 @@
 			baseConfigurationReference = A47FE4D7F70906B7DC8CE39B /* Pods-healthpro.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LIBRARY = "compiler-default";
 				DEVELOPMENT_TEAM = C8D8QTF339;
 				INFOPLIST_FILE = "$(SRCROOT)/healthpro/Supporting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = iosidentifier;

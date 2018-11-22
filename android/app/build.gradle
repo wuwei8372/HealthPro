@@ -99,6 +99,8 @@ apply from: 'expo.gradle'
 
 
 dependencies {
+    compile project(':react-native-text-detector')
+    compile project(':react-native-camera')
     compile project(':react-native-voice')
   implementation fileTree(dir: 'libs', include: ['*.jar'])
 
