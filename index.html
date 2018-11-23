@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="Xi Chen">
+  <title>Product Recommendation</title>
+  
+<script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAnb79wNGnzgjGwG42LqNKT35nW8BvuOPY",
+    authDomain: "healthpro-8508b.firebaseapp.com",
+    databaseURL: "https://healthpro-8508b.firebaseio.com",
+    projectId: "healthpro-8508b",
+    storageBucket: "healthpro-8508b.appspot.com",
+    messagingSenderId: "250030420290"
+  };
+  var defaultApp = firebase.initializeApp(config);
+  //console.log(defaultApp.name); 
+
+</script>
+</head>
+<body>
+
+  <h1>Hello Xi</h1>
+  <script>
+  	var users = [];
+  	var ages = [];
+  	var searching_histories = [];
+  	// users.push("Alice");
+  	// users.push("Bob");
+  	// for (var i = 0; i < 2; i++) {
+  	// 	console.log("This is testing " + users[i]);
+  	// }
+
+  	// Fake a user: assume we want to recommend another product to this user based on their age
+  	var user_age = 20;
+  	// array that store the searching products
+  	var search_results = [];
+  	//access to database
+  	var database = firebase.database();
+ //  	var productRef = database.ref('products');
+	// productRef.on('value', function(snapshot) {
+ //    	snapshot.forEach(function(childSnapshot) {
+ //      		var childData = childSnapshot.val();
+ //      		//console.log(childData["description"]);
+ //    	});
+	// });
+	var userRef = database.ref('users');
+	userRef.on('value', function(snapshot) {
+    	snapshot.forEach(function(childSnapshot) {
+      		var childData = childSnapshot.val();
+      		//console.log(childData["description"]);
+      		users.push(childData["name"]);
+      		//console.log(childData["name"]);
+      		//console.log("users' size is " + users.length);
+
+      		ages.push(childData["age"]);
+      		searching_histories.push(childData["searching_history"]);
+    	});
+    	// console.log("After " + users.length);
+    	// console.log("After " + ages.length);
+    	// console.log("After " + searching_histories.length);
+    	// Recommendation based on age
+    	var map = new Map();
+    	var maxCount = 0;
+    	var result = ""; //the product that we want to recommend to user
+    	for (var i = 0; i < ages.length; i++) {
+    		if (Math.abs(ages[i] - user_age) <= 3) {
+    			search_results.push(searching_histories[i]);
+    			if (!map.has(searching_histories[i])) {
+    				map.set(searching_histories[i], 1);
+    			} else {
+    				map.set(searching_histories[i], map.get(searching_histories[i]) + 1);
+    			}
+    			//console.log(searching_histories[i] + " " + map.get(searching_histories[i]));
+    		}
+    	}
+
+    	for (var key of map.keys()) {
+    		if (map.get(key) > maxCount) {
+    			result = key;
+    		}
+    	}
+
+	});
+	//console.log("After " + users.length);
+	
+	//insert user into the database
+	// writeUserData(4, 2, "F", "Dara", "Product3");
+	// function writeUserData(userId, age, gender, name, searching_history) {
+ //  		firebase.database().ref('users' + userId).set({
+ //    	age: age,
+ //    	gender: gender,
+ //    	name : name,
+ //    	searching_history: searching_history
+ //  	});
+	// }
+  </script>
+  
+</body>
+</html>
