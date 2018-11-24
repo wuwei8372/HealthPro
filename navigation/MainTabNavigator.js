@@ -10,6 +10,8 @@ import Register from '../screens/Register'
 import Login from '../screens/Login'
 import Nutrition from '../screens/NutritionScreen'
 import VoiceNative from '../screens/SpeechScreen'
+import ExpoCamera from '../screens/ExpoCamera'
+import ExpoImagePicker from '../screens/ExpoImagePicker'
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
 });
@@ -63,5 +65,6 @@ export default createBottomTabNavigator({
   SettingsStack,
   Register,
   Nutrition,
-  VoiceNative
+  VoiceNative,
+  ExpoImagePicker
 });

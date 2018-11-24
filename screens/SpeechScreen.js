@@ -41,6 +41,7 @@ onSpeechResults(e) {
   }
 resetResult = () => {
     this.setState({results: []});
+    Voice.destroy();
 }
 async _startRecognition(e) {
     this.setState({
@@ -55,32 +56,53 @@ async _startRecognition(e) {
       console.error(e);
     }
   }
+stop = () => {
+    Voice.stop();
+}
+  
 render () {
     return (
-    <Grid>
-        <Row style={{ height: 100, top: 40 }}>
+    <View>
+        <Row style = {{ height: 100, top : 40}}>
+        
+        <View>
             <AwesomeButton
-              backgroundColor="#ADD8E6"
-              textColor = "#FFFFFF"
-              onPress={this._startRecognition.bind(this)}
-              margin="30"
-              >
-              <Text>Start record</Text>
-          </AwesomeButton>
-          <AwesomeButton
-              backgroundColor="#ADD8E6"
-              textColor = "#FFFFFF"
-              onPress={this.resetResult.bind(this)}
-              margin="30"
-              >
-              <Text>Start Over</Text>
-          </AwesomeButton>
+                backgroundColor="#ADD8E6"
+                textColor = "#FFFFFF"
+                onPress={this._startRecognition.bind(this)}
+                margin="30"
+                >
+                <Text>Start Recognition</Text>
+            </AwesomeButton>
+        </View>
+           
+          
+          <View>
+            <AwesomeButton
+                backgroundColor="#ADD8E6"
+                textColor = "#FFFFFF"
+                onPress={this.stop}
+                margin="30"
+                >
+                <Text>Stop Recognition</Text>
+            </AwesomeButton>
+          </View>
+         
         </Row>
+        <View>
+            <AwesomeButton
+                backgroundColor="#ADD8E6"
+                textColor = "#FFFFFF"
+                onPress={this.resetResult}
+                margin="30"
+                >
+                <Text>Reset Recognition</Text>
+            </AwesomeButton>
+          </View>
         
-        
-        <Row style={styles.container}>
+        <Row style={{ height: 100, top: 40 }}>
             <Text style={styles.transcript}>
-                Transcript
+                Recoginized text: 
             </Text>
             {this.state.results.map((result, index) => <Text style={styles.transcript}> {result}</Text>
             )}
@@ -112,8 +134,8 @@ render () {
               <Text>Search by Syndrome</Text>
           </AwesomeButton>
         </Row>
-    </Grid>
-      
+
+    </View>
     );
   }
 }
