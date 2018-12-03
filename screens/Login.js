@@ -90,8 +90,8 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     height: 40,
     marginBottom: 30,
-    color: '#fff',
-    borderBottomColor: '#fff',
+    color: '#000000',
+    borderBottomColor: '#000000',
     borderBottomWidth: 1,
   },
   Button: {

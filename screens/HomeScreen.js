@@ -103,6 +103,28 @@ export default class HomeScreen extends React.Component {
                 backgroundColor="#91d6f2"
                 onPress={()=>{
                   const { navigate } = this.props.navigation;
+                  navigate("Links", {text: 'Calcium'});
+                  }
+                }
+                >
+
+                <Text>Calcium</Text>
+            </AwesomeButton>
+            <AwesomeButton
+                backgroundColor="#91d6f2"
+                onPress={()=>{
+                  const { navigate } = this.props.navigation;
+                  navigate("Links", {text: 'Fish oil'});
+                  }
+                }
+                >
+
+                <Text>Fish oil</Text>
+            </AwesomeButton>
+            <AwesomeButton
+                backgroundColor="#91d6f2"
+                onPress={()=>{
+                  const { navigate } = this.props.navigation;
                   navigate("Links", {text: 'Cough'});
                   }
                 }
