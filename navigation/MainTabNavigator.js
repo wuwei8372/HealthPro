@@ -9,6 +9,7 @@ import SettingsScreen from '../screens/SettingsScreen';
 import Register from '../screens/Register'
 import Login from '../screens/Login'
 import Nutrition from '../screens/NutritionScreen'
+import ExpoImagePicker from '../screens/ExpoImagePicker'
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
 });
@@ -46,7 +47,7 @@ const SettingsStack = createStackNavigator({
 });
 
 SettingsStack.navigationOptions = {
-  tabBarLabel: 'Syndrome'
+  tabBarLabel: 'symptom'
   // tabBarIcon: ({ focused }) => (
   //   <TabBarIcon
   //     focused={focused}
@@ -62,4 +63,5 @@ export default createBottomTabNavigator({
   SettingsStack,
   Register,
   Nutrition,
+  ExpoImagePicker
 });

@@ -89,7 +89,7 @@ export default class HomeScreen extends React.Component {
                 backgroundColor="#ADFF2F"
                 onPress={()=>this.onButtonPress.bind(this)("Settings")}
                 >
-                <Text>Search by syndrome name</Text>
+                <Text>Search by symptom name</Text>
             </AwesomeButton>
 
             <Text style = {{width: 150, height: 30, backgroundColor: 'powderblue'}}>
